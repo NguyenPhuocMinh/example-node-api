@@ -11,6 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "mongoose": "^5.10.10",
-    "web-server-node": "^1.0.7"
+    "winrow": "^1.1.0"
   }
 }
