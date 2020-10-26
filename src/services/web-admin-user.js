@@ -1,6 +1,6 @@
 'use strict';
 
-const webServer = require('web-server-node');
+const webServer = require('winrow');
 const {
   Promise,
   lodash,
