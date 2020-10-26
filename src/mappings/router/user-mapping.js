@@ -17,9 +17,9 @@ module.exports = [
       }
     },
     output: {
-      transform: function (res, opts) {
+      transform: function (response, result) {
         return (
-          res.send(opts)
+          response.send(result)
         )
       }
     }
@@ -39,10 +39,9 @@ module.exports = [
       }
     },
     output: {
-      transform: function (res, opts) {
+      transform: function (response, result) {
         return (
-          res
-            .send(opts)
+          response.send(result)
         )
       }
     }
