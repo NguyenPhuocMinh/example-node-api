@@ -25,12 +25,9 @@ function UserService() {
       password = args.password
     }
 
-    const user = new User({
-      firstName: args.firstName,
-      lastName: args.lastName,
-      email: args.email,
-      password: password,
-    })
+    args.password = password;
+
+    const user = new User(args)
 
     return Promise.resolve(user)
       .then(user => convertUserResponse(user))

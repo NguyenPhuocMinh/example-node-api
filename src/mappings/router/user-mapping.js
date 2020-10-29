@@ -17,10 +17,10 @@ module.exports = [
       }
     },
     output: {
-      transform: function (response, result) {
-        return (
-          response.send(result)
-        )
+      transform: function (response) {
+        return {
+          body: response.data
+        }
       }
     }
   },
@@ -40,9 +40,12 @@ module.exports = [
     },
     output: {
       transform: function (response, result) {
-        return (
-          response.send(result)
-        )
+        return {
+          headers: {
+            'X-AccessToken': response.token
+          },
+          body: response.data
+        }
       }
     }
   },
