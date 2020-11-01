@@ -5,7 +5,8 @@ const {
   Promise,
   lodash,
   loggingFactory,
-  returnCodes
+  returnCodes,
+  dataMongoose
 } = webServer;
 const User = require('../models/index').UserModel;
 const errorCodes = require('../../config/dev/errorCodes');
@@ -18,23 +19,13 @@ function UserService() {
   this.registerUser = async function (args) {
     loggingFactory.info(JSON.stringify(args));
     // Hash Password
-    let password = '';
-    if (isEmpty(args.password)) {
-      password = '123';
-    } else {
-      password = args.password
-    }
+    args.password = '123';
 
-    args.password = password;
-
-    const user = new User(args)
-
-    return Promise.resolve(user)
+    return dataMongoose.create({
+      type: 'UserModel',
+      data: args
+    })
       .then(user => convertUserResponse(user))
-      .then(result => {
-        return result;
-      })
-      .then(() => user.save())
       .catch(err => {
         loggingFactory.error('Error Register:', JSON.stringify(err, null, 2));
         return Promise.reject(err);
@@ -43,7 +34,10 @@ function UserService() {
   // login user
   this.loginUser = async function (args) {
     try {
-      const userLogin = await User.findOne({ email: args.email })
+      const userLogin = await dataMongoose.findOne({
+        type: 'UserModel',
+        filter: { email: args.email }
+      })
       if (!userLogin) {
         return Promise.reject(returnCodes(errorCodes, 'EmailNotFound'))
       }
@@ -54,6 +48,7 @@ function UserService() {
         ]
       )
       return {
+        token: 'token',
         message: 'ok',
       }
     } catch (err) {

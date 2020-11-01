@@ -19,7 +19,7 @@ module.exports = [
     output: {
       transform: function (response) {
         return {
-          body: response.data
+          body: response
         }
       }
     }
@@ -39,12 +39,12 @@ module.exports = [
       }
     },
     output: {
-      transform: function (response, result) {
+      transform: function (response) {
         return {
           headers: {
             'X-AccessToken': response.token
           },
-          body: response.data
+          body: response
         }
       }
     }
