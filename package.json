@@ -7,10 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Minh Nguyễn",
   "license": "ISC",
   "dependencies": {
     "mongoose": "^5.10.11",
-    "winrow": "^1.7.0"
+    "winrow": "^1.9.1"
   }
 }

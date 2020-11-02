@@ -1,6 +1,9 @@
 'use strict';
 
+const webServer = require('winrow');
+const { validator } = webServer;
 const UserService = require('../../services/web-admin-user');
+const { userLoginSchema } = require('../../utils/schema');
 
 module.exports = [
   // user register
@@ -32,6 +35,10 @@ module.exports = [
     serviceName: UserService,
     input: {
       transform: function (req) {
+        const { valid, errors } = validator(userLoginSchema, req.body);
+        if (!valid) {
+          return Promise.reject(errors);
+        }
         return {
           email: req.body.email,
           password: req.body.password

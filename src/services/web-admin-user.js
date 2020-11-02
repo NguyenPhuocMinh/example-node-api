@@ -30,8 +30,10 @@ function UserService() {
       });
   };
   // login user
-  this.loginUser = async function (args) {
+  this.loginUser = async function (args, opts) {
+    const { loggingFactory, requestId } = opts;
     try {
+      loggingFactory.debug('User login begin', { requestId: `${requestId}` })
       const userLogin = await dataMongoose.findOne({
         type: 'UserModel',
         filter: { email: args.email }
@@ -40,11 +42,7 @@ function UserService() {
         return Promise.reject(returnCodes(errorCodes, 'EmailNotFound'))
       }
       tokenList[refreshToken] = userLogin;
-      loggingFactory.silly('User Login Info:',
-        [
-          { 'userId': userLogin.id },
-        ]
-      )
+      loggingFactory.silly('User Login End', { requestId: `${requestId}` })
       return {
         token: 'token',
         message: 'ok',
