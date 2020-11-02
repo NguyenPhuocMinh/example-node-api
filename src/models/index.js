@@ -2,8 +2,8 @@
 
 const UserModel = require('./user-model');
 
-const models = {
+const models = [
   UserModel,
-};
+];
 
 module.exports = models;

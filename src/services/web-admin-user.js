@@ -4,11 +4,9 @@ const webServer = require('winrow');
 const {
   Promise,
   lodash,
-  loggingFactory,
   returnCodes,
   dataMongoose
 } = webServer;
-const User = require('../models/index').UserModel;
 const errorCodes = require('../../config/dev/errorCodes');
 const { isEmpty, get, isArray } = lodash;
 let tokenList = {};
