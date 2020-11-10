@@ -4,10 +4,10 @@ const webServer = require('winrow');
 const {
   Promise,
   lodash,
-  returnCodes,
-  dataMongoose
+  returnCodes
 } = webServer;
 const errorCodes = require('../../config/dev/errorCodes');
+const dataStore = require('winrow-repository').dataStore;
 const { isEmpty, get, isArray } = lodash;
 let tokenList = {};
 
@@ -19,7 +19,7 @@ function UserService() {
     // Hash Password
     args.password = '123';
 
-    return dataMongoose.create({
+    return dataStore.create({
       type: 'UserModel',
       data: args
     })
@@ -34,7 +34,7 @@ function UserService() {
     const { loggingFactory, requestId } = opts;
     try {
       loggingFactory.debug('User login begin', { requestId: `${requestId}` })
-      const userLogin = await dataMongoose.findOne({
+      const userLogin = await dataStore.findOne({
         type: 'UserModel',
         filter: { email: args.email }
       })

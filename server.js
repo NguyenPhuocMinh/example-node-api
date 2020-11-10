@@ -1,13 +1,14 @@
 'use strict';
 
 const server = require('web-server-node');
-const mappings = require('./src/mappings/index');
+const repository = require('winrow-repository');
+const transform = require('winrow-transform');
 const sandbox = require('./config/dev/sandbox');
 
 if (require.main === module) {
-  server.mappingApi(mappings);
   server.start();
-  server.repository(sandbox);
+  repository.connect(sandbox);
+  transform.mapping(sandbox);
   const stopped = function () {
     server.stop();
   };

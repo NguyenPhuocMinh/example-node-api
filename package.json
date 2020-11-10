@@ -1,8 +1,8 @@
 {
   "name": "example-node-api",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Example crud rest api with lib winrow",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,7 +10,9 @@
   "author": "Minh Nguyễn",
   "license": "ISC",
   "dependencies": {
-    "mongoose": "^5.10.11",
-    "winrow": "^1.9.1"
+    "mongoose": "^5.10.13",
+    "winrow": "^1.9.5",
+    "winrow-repository": "^1.0.2",
+    "winrow-transform": "^1.0.2"
   }
 }
