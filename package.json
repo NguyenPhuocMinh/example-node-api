@@ -10,9 +10,8 @@
   "author": "Minh Nguyễn",
   "license": "ISC",
   "dependencies": {
-    "mongoose": "^5.10.13",
-    "winrow": "^1.9.5",
-    "winrow-repository": "^1.0.2",
-    "winrow-transform": "^1.0.2"
+    "winrow": "^1.9.9",
+    "winrow-repository": "^1.5.0",
+    "winrow-transform": "^1.5.0"
   }
 }

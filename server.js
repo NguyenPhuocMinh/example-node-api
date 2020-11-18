@@ -9,6 +9,7 @@ if (require.main === module) {
   server.start();
   repository.connect(sandbox);
   transform.mapping(sandbox);
+  require('./src/models');
   const stopped = function () {
     server.stop();
   };

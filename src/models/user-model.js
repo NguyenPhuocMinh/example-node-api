@@ -1,6 +1,6 @@
 'use strict';
 
-const mongoose = require('mongoose');
+const mongoose = require('winrow').mongoose;
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
