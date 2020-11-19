@@ -14,8 +14,9 @@ let tokenList = {};
 function UserService() {
 
   // register user
-  this.registerUser = async function (args) {
-    loggingFactory.info(JSON.stringify(args));
+  this.registerUser = async function (args, opts) {
+    const { loggingFactory, requestId } = opts;
+    loggingFactory.info(`function registerUser begin`, { requestId: `${requestId}` });
     // Hash Password
     args.password = '123';
 
