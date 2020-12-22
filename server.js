@@ -1,18 +1,17 @@
 'use strict';
 
 const server = require('winrow');
-const repository = require('winrow-repository');
-const transform = require('winrow-transform');
 const sandbox = require('./config/dev/sandbox');
 
 if (require.main === module) {
-  server.start(sandbox);
-  repository.connect(sandbox);
-  transform.mapping(sandbox);
+  server.init(sandbox);
+  server.start();
+  server.connect_mongoose();
+  server.mapping();
   require('./src/models');
   const stopped = function () {
     server.stop();
-    repository.disconnect(sandbox)
+    server.disconnect_mongoose();
   };
   process.on('SIGINT', stopped);
   process.on('SIGQUIT', stopped);

@@ -1,18 +1,14 @@
 'use strict';
 
 const webServer = require('winrow');
-const {
-  Promise,
-  lodash,
-  returnCodes
-} = webServer;
+const Promise = webServer.require('bluebird');
+const lodash = webServer.require('lodash');
 const errorCodes = require('../../config/dev/errorCodes');
-const dataStore = require('winrow-repository').dataStore;
 const { isEmpty, get, isArray } = lodash;
 let tokenList = {};
 
-function UserService() {
-
+function UserService(params = {}) {
+  const { dataStore, returnCodes } = params;
   // register user
   this.registerUser = async function (args, opts) {
     const { loggingFactory, requestId } = opts;
@@ -67,4 +63,5 @@ function convertUserResponse(user) {
   }
 };
 
-module.exports = new UserService();
+exports = module.exports = new UserService();
+exports.init = UserService;
