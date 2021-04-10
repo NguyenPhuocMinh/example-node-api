@@ -1,6 +1,6 @@
 'use strict';
 
-const server = require('winrow');
+const server = require('exp-server');
 const sandbox = require('./config/dev/sandbox');
 
 if (require.main === module) {

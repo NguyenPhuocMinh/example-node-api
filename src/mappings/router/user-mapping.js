@@ -1,7 +1,7 @@
 'use strict';
 
-const webServer = require('winrow');
-const Promise = webServer.require('bluebird');
+const server = require('exp-server');
+const Promise = server.require('bluebird');
 const UserService = require('../../services/web-admin-user');
 const { userLoginSchema } = require('../../utils/schema');
 

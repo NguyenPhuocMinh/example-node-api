@@ -1,14 +1,14 @@
 'use strict';
 
-const webServer = require('winrow');
-const Promise = webServer.require('bluebird');
-const lodash = webServer.require('lodash');
+const server = require('exp-server');
+const Promise = server.require('bluebird');
+const lodash = server.require('lodash');
+const dataStore = server.dataStore;
 const errorCodes = require('../../config/dev/errorCodes');
 const { isEmpty, get, isArray } = lodash;
 let tokenList = {};
 
 function UserService(params = {}) {
-  const { dataStore, returnCodes } = params;
   // register user
   this.registerUser = async function (args, opts) {
     const { loggingFactory, requestId } = opts;
