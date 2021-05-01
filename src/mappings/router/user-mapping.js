@@ -8,7 +8,7 @@ const { userLoginSchema } = require('../../utils/schema');
 module.exports = [
   // user register
   {
-    pathName: '/users',
+    pathName: '/user/registers',
     method: 'POST',
     methodName: 'registerUser',
     serviceName: UserService,

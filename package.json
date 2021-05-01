@@ -10,6 +10,6 @@
   "author": "Minh Nguyễn",
   "license": "ISC",
   "dependencies": {
-    "exp-server": "^0.1.0"
+    "exp-server": "^0.1.2"
   }
 }

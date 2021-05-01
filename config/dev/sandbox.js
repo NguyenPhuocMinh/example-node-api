@@ -6,26 +6,25 @@ module.exports = {
   application: {
     pathServer: '/rest/api',
     enable: false,
-    data_ssl: {
-      port: 443,
-      host: 'exampledomain.com'
-    },
-    bridge: {
+    bridges: {
       connect: {
-        database_local: {
-          host: 'localhost',
-          port: '27017',
-          name: 'demoLocal',
+        serverInternees: {
+          port: 7979,
+          host: '0.0.0.0'
         },
-        database_server: {
-          host: 'localhost',
-          port: '27017',
-          name: 'demoServer',
+        mongoose: {
+          dataStore: {
+            connect_options: {
+              host: 'localhost',
+              port: '27017',
+              name: 'example',
+            }
+          }
+        },
+        mappingStore: {
+          mappings: mappings,
         }
       },
-      rest_api: {
-        mappings: mappings
-      }
     },
   },
 }

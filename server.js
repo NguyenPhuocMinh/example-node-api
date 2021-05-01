@@ -4,10 +4,10 @@ const server = require('exp-server');
 const sandbox = require('./config/dev/sandbox');
 
 if (require.main === module) {
-  server.init(sandbox);
+  server.register(sandbox);
   server.start();
   server.connect_mongoose();
-  server.mapping();
+  server.mappingStore();
   require('./src/models');
   const stopped = function () {
     server.stop();
